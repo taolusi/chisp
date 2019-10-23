@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# log files
+*.log
+
+# data folders
+data/*
+database/*
+embedding/*
+
+# pycharm folders
+.idea/
