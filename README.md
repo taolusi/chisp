@@ -9,12 +9,12 @@ CSpider is a large Chinese dataset for complex and cross-domain semantic parsing
 ### Citation
 When you use the CSpider dataset, we would appreciate it if you cite the following:
 ```
-@inproceedings{Min&al.19.emnlp.chisp,
-title = {A Pilot Study for Chinese SQL Semantic Parsing},
-author  = {Qingkai Min and Yuefeng Shi and Yue Zhang},
-booktitle = {2019 Conference on Empirical Methods in Natural Language Processing and 9th International Joint Conference on Natural Language Processing},
-address = {Hong Kong},
-year  = {2019}
+@inproceedings{min2019pilot,
+  title={A Pilot Study for Chinese SQL Semantic Parsing},
+  author={Min, Qingkai and Shi, Yuefeng and Zhang, Yue},
+  booktitle={Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)},
+  pages={3643--3649},
+  year={2019}
 }
 ```
 Our dataset is based on [Spider](https://github.com/taoyds/spider/), please cite it too.
