@@ -29,7 +29,7 @@ Our dataset is based on [Spider](https://github.com/taoyds/spider/), please cite
 
 #### Prepare Data, Embeddings, and Pretrained Models
 1. Download the data, embedding and database:
-  - To use the full dataset(recommended), download train/dev data from [here](https://drive.google.com/drive/folders/1TxCUq1ydPuBdDdHF3MkHT-8zixluQuLa?usp=sharing) and evaluate on the unreleased test data based on the submission tutorial on our [task site](https://taolusi.github.io/CSpider-explorer/). Specifically, 
+  - To use the full dataset(recommended), download train/dev data from [Google Drive](https://drive.google.com/drive/folders/1TxCUq1ydPuBdDdHF3MkHT-8zixluQuLa?usp=sharing) or [BaiduNetDisk](https://pan.baidu.com/s/1Dxj38wRbbTOe0t3mQ3qhMg) and evaluate on the unreleased test data based on the submission tutorial on our [task site](https://taolusi.github.io/CSpider-explorer/). Specifically, 
     - Put the downloaded `train.json` and `dev.json` under `chisp/data/char/` directory. To use word-based methods, please do the word segmentation first and put the json files under `chisp/data/word/` directory.
     - Put the downloaded `char_emb.txt` under `chisp/embedding/` directory. This is generated from the Tencent multilingual embeddings for the cross-lingual word embeddings schema. To use monolingual embedding schema, step 2 is necessary.
     - Put the downloaded `database` directory under `chisp/` directory.
