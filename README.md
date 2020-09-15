@@ -29,7 +29,7 @@ Our dataset is based on [Spider](https://github.com/taoyds/spider/), please cite
 
 #### Prepare Data, Embeddings, and Pretrained Models
 1. Download the data, embedding and database:
-  - To use the full dataset(recommended), download train/dev data from [Google Drive](https://drive.google.com/drive/folders/1TxCUq1ydPuBdDdHF3MkHT-8zixluQuLa?usp=sharing) or [BaiduNetDisk](https://pan.baidu.com/s/1Dxj38wRbbTOe0t3mQ3qhMg) and evaluate on the unreleased test data based on the submission tutorial on our [task site](https://taolusi.github.io/CSpider-explorer/). Specifically, 
+  - To use the full dataset(recommended), download train/dev data from [Google Drive](https://drive.google.com/drive/folders/1TxCUq1ydPuBdDdHF3MkHT-8zixluQuLa?usp=sharing) or [BaiduNetDisk](https://pan.baidu.com/s/1aDYht6eSIyBgceCjeuSmpw)(code: cgh1) and evaluate on the unreleased test data based on the submission tutorial on our [task site](https://taolusi.github.io/CSpider-explorer/). Specifically,
     - Put the downloaded `train.json` and `dev.json` under `chisp/data/char/` directory. To use word-based methods, please do the word segmentation first and put the json files under `chisp/data/word/` directory.
     - Put the downloaded `char_emb.txt` under `chisp/embedding/` directory. This is generated from the Tencent multilingual embeddings for the cross-lingual word embeddings schema. To use monolingual embedding schema, step 2 is necessary.
     - Put the downloaded `database` directory under `chisp/` directory.
@@ -42,7 +42,7 @@ Our dataset is based on [Spider](https://github.com/taoyds/spider/), please cite
 
 #### Folder/File Description
 - ``data/`` contains:
-    - ``char/`` for character-based raw train/dev/test data, corresponding processed dataset and saved models can be found at ``char/generated_datasets``. 
+    - ``char/`` for character-based raw train/dev/test data, corresponding processed dataset and saved models can be found at ``char/generated_datasets``.
     - ``word/`` for word-based raw train/dev/test data, corresponding processed dataset and saved models can be found at ``word/generated_datasets``.
 - ``train.py`` is the main file for training. Use ``train_all.sh`` to train all the modules (see below).
 - ``test.py`` is the main file for testing. It uses ``supermodel.py`` to call the trained modules and generate SQL queries. In practice, use ``test_gen.sh`` to generate SQL queries.
@@ -57,7 +57,7 @@ python train.py \
     --data_root       path/to/char/or/word/based/generated_data \
     --save_dir        path/to/save/trained/module \
     --train_component <module_name> \
-    --emb_path        path/to/embeddings 
+    --emb_path        path/to/embeddings
     --col_emb_path    path/to/corresponding/embeddings/for/column
 ```
 
@@ -69,7 +69,7 @@ python test.py \
     --test_data_path  path/to/char/or/word/based/raw/dev/or/test/data \
     --models          path/to/trained/module \
     --output_path     path/to/print/generated/SQL \
-    --emb_path        path/to/embeddings 
+    --emb_path        path/to/embeddings
     --col_emb_path    path/to/corresponding/embeddings/for/column
 ```
 
@@ -78,7 +78,7 @@ Run ``evaluation.sh`` to evaluate generated SQL queries.
 ``evaluation.sh`` looks like:
 ```
 python evaluation.py \
-    --gold            path/to/gold/dev/or/test/queries \ 
+    --gold            path/to/gold/dev/or/test/queries \
     --pred            path/to/predicted/dev/or/test/queries \
     --etype           evaluation/metric \
     --db              path/to/database \
