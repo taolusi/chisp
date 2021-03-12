@@ -1,0 +1,72 @@
+{
+    "config": {
+        "allow_multiple_models": false,
+        "allow_orphans": true,
+        "count_failed_submissions": true,
+        "evaluate": {
+            "command": "python evaluation.py --gold dev_gold.txt --pred predicted_sql.txt --etype match --db database --table data/tables.json",
+            "dependencies": [
+                {
+                    "child_path": "evaluation.py",
+                    "parent_path": "",
+                    "parent_uuid": "0xed9c9d64b6e74056a98a5a592d9286c9"
+                },
+                {
+                    "child_path": "dev_gold.txt",
+                    "parent_path": "",
+                    "parent_uuid": "0x7c4006535b2d40288931afd71cc4e8e5"
+                },
+                {
+                    "child_path": "predicted_sql.txt",
+                    "parent_path": "",
+                    "parent_uuid": "0x7c4006535b2d40288931afd71cc4e8e5"
+                },
+                {
+                    "child_path": "tables.json",
+                    "parent_path": "data",
+                    "parent_uuid": "0xd2e9047706aa44a38df48bf16b4385f6"
+                },
+                {
+                    "child_path": "database",
+                    "parent_path": "",
+                    "parent_uuid": "0x794231a420384b6aa5086407ac21286b"
+                }
+            ],
+            "metadata": {},
+            "tag": "competition-evaluate"
+        },
+        "host": "https://worksheets.codalab.org",
+        "log_worksheet_uuid": "0xd2d37ae7db5b40d09aa52850ed34ee1e",
+        "make_predictions_public": false,
+        "max_leaderboard_size": 10000,
+        "max_submissions_per_period": 2,
+        "max_submissions_total": 10000,
+        "metadata": {},
+        "predict": {
+            "depth": 10,
+            "metadata": {},
+            "mimic": [
+                {
+                    "new": "0x064a87a9db764d7a814726c77b86ff73",
+                    "old": "0xd2e9047706aa44a38df48bf16b4385f6"
+                }
+            ],
+            "tag": "competition-predict"
+        },
+        "quota_period_seconds": 86400,
+        "refresh_period_seconds": 60,
+        "score_specs": [
+            {
+                "key": "/result.json:dev_f1",
+                "name": "dev_f1"
+            },
+            {
+                "key": "/result.json:test_f1",
+                "name": "test_f1"
+            }
+        ],
+        "submission_tag": "cspider-test-submit"
+    },
+    "leaderboard": [],
+    "updated": 1615514134.3646703
+}

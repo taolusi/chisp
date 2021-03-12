@@ -1,0 +1,43 @@
+# Allows at most 5 submissions per user per period, where period is 24 hours by default.
+max_submissions_per_period: 2
+
+# UUID of the worksheet where prediction and evaluation bundles are created for submissions.
+log_worksheet_uuid: '0xd2d37ae7db5b40d09aa52850ed34ee1e'    
+
+# Configure the tag that participants use to submit to the competition.
+# In this example, any bundle with the tag `some-competition-submit` would be
+# considered as an official submission.
+submission_tag: cspider-test-submit
+
+# Configure how to mimic the submitted prediction bundles. When evaluating a submission, 
+# `new` bundle will replace `old` bundle.
+# For a machine learning competition, `old` bundle might be the dev set and `new` bundle
+# might be the hidden test set.
+predict:
+  mimic:
+  - {new: '0x064a87a9db764d7a814726c77b86ff73', old: '0xd2e9047706aa44a38df48bf16b4385f6'}
+
+# Configure how to evaluate the new prediction bundles.
+# In this example, evaluate.py is script that takes in the paths of the test labels and 
+# predicted labels and outputs the evaluation results.
+evaluate:
+  # Essentially
+  #     cl run evaluate.py:0x089063eb85b64b239b342405b5ebab57 \
+  #            test.json:0x5538cba32e524fad8b005cd19abb9f95 \
+  #            predictions.json:{predict}/predictions.json --- \
+  #            python evaluate.py test.json predictions.json
+  # where {predict} gets filled in with the uuid of the mimicked bundle above.
+  dependencies:
+  - {child_path: evaluation.py, parent_uuid: '0xed9c9d64b6e74056a98a5a592d9286c9'}
+  - {child_path: dev_gold.txt, parent_uuid: '0x7c4006535b2d40288931afd71cc4e8e5'}
+  - {child_path: predicted_sql.txt, parent_uuid: '0x7c4006535b2d40288931afd71cc4e8e5'}
+  - {child_path: tables.json, parent_path: data, parent_uuid: '0xd2e9047706aa44a38df48bf16b4385f6'}
+  - {child_path: database, parent_uuid: '0x794231a420384b6aa5086407ac21286b'}
+  command: python evaluation.py --gold dev_gold.txt --pred predicted_sql.txt --etype match --db database --table data/tables.json
+
+# Define how to extract the scores from the evaluation bundle.
+# In this example, result.json is a JSON file outputted from the evaluation step
+# with F1 and exact match metrics (e.g. {"f1": 91, "exact_match": 92}).
+score_specs:
+- {key: '/result.json:dev_f1', name: dev_f1}
+- {key: '/result.json:test_f1', name: test_f1}
